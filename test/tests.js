@@ -13,8 +13,9 @@ describe('buildJSHint', function() {
             }
         };
 
-        buildJSHint(file, opts, function(err) {
+        buildJSHint(file, opts, function(err, hasError) {
             expect(err).to.not.exist;
+            expect(hasError).to.be.true;
             expect(errors).to.have.length(1);
             done();
         });
@@ -28,8 +29,9 @@ describe('buildJSHint', function() {
             ignore: ['error_*.js']
         };
 
-        buildJSHint(filesDir, opts, function(err) {
+        buildJSHint(filesDir, opts, function(err, hasError) {
             expect(err).to.not.exist;
+            expect(hasError).to.be.false;
             expect(errors).to.be.empty;
             done();
         });
@@ -43,8 +45,9 @@ describe('buildJSHint', function() {
         };
 
         var file = path.join(__dirname, 'files/error_global.js');
-        buildJSHint(file, opts, function(err) {
+        buildJSHint(file, opts, function(err, hasError) {
             expect(err).to.not.exist;
+            expect(hasError).to.be.true;
             expect(errors).to.have.length(1);
             done();
         });
@@ -59,8 +62,9 @@ describe('buildJSHint', function() {
         };
 
         var file = path.join(__dirname, 'files/error_global.js');
-        buildJSHint(file, opts, function(err) {
+        buildJSHint(file, opts, function(err, hasError) {
             expect(err).to.not.exist;
+            expect(hasError).to.be.false;
             expect(errors).to.be.empty;
             done();
         });

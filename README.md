@@ -11,8 +11,9 @@ Example
 var buildJSHint = require('build-jshint');
 
 // Errors will be logged to the console
-buildJSHint('src/**/*.js', function(err) {
+buildJSHint('src/**/*.js', function(err, hasError) {
     // `err` is a fatal error, *not* a JSHint error
+    // `hasError` indicates if any of the files had a JSHint error
 });
 
 // Example output:
@@ -40,7 +41,9 @@ var opts = {
     globals: { document: false }
 };
 
-buildJSHint(['src/file.js', 'src/scripts/*.js'], opts, function(err) {
+var files = ['src/file.js', 'src/scripts/*.js'];
+
+buildJSHint(files, opts, function(err, hasError) {
     // ...
 });
 ```
@@ -61,7 +64,9 @@ above example for the complete list.
 
 `callback` is a function that will be called when the processing is done. If
 a fatal error occurred (such as error reading a file; JSHint errors are *not*
-included), it will be passed to the callback as the first argument.
+included), it will be passed to the callback as the first argument. The second
+arguments will be a boolean indicated whether a JSHint error was encountered in
+any of the files.
 
 License
 -------

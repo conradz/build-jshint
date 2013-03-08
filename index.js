@@ -33,9 +33,11 @@ function hintFile(file, options, callback) {
             JSHINT.errors.forEach(function(error) {
                 options.reporter(error, file, src);
             });
-        }
 
-        callback();
+            callback(null, true);
+        } else {
+            callback(null, false);
+        }
     });
 }
 
@@ -55,8 +57,14 @@ function buildJSHint(paths, options, callback) {
         paths = [paths];
     }
 
+    var hasError = false;
     function processFile(file, callback) {
-        hintFile(file, options, callback);
+        hintFile(file, options, function(err, lintError) {
+            if (err) { return callback(err); }
+
+            hasError = hasError || lintError;
+            callback();
+        });
     }
 
     function processGlob(p, callback) {
@@ -66,7 +74,10 @@ function buildJSHint(paths, options, callback) {
         });
     }
 
-    async.forEach(paths, processGlob, callback);
+    async.forEach(paths, processGlob, function(err) {
+        if (err) { return callback(err); }
+        callback(null, hasError);
+    });
 }
 
 module.exports = buildJSHint;
