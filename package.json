@@ -1,6 +1,6 @@
 {
     "name": "build-jshint",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Helper for running JSHint on files and directories",
     "main": "index.js",
     "scripts": {
