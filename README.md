@@ -1,7 +1,7 @@
 build-jshint
 ============
 
-[![Build Status](https://travis-ci.org/conradz/build-jshint.png)](https://travis-ci.org/conradz/build-jshint)
+[![Build Status](https://drone.io/github.com/conradz/build-jshint/status.png)](https://drone.io/github.com/conradz/build-jshint/latest)
 
 Helper for running [JSHint](http://jshint.com) on JS files as part of a build
 step from a Node.JS script.
