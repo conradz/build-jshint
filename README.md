@@ -1,13 +1,14 @@
-build-jshint
-============
+# build-jshint
+
+[![NPM](https://nodei.co/npm/build-jshint.png?compact=true)](https://nodei.co/npm/build-jshint/)
 
 [![Build Status](https://drone.io/github.com/conradz/build-jshint/status.png)](https://drone.io/github.com/conradz/build-jshint/latest)
+[![Dependency Status](https://gemnasium.com/conradz/build-jshint.png)](https://gemnasium.com/conradz/build-jshint)
 
 Helper for running [JSHint](http://jshint.com) on JS files as part of a build
 step from a Node.JS script.
 
-Example
--------
+## Example
 
 ```js
 var buildJSHint = require('build-jshint');
@@ -50,8 +51,7 @@ buildJSHint(files, opts, function(err, hasError) {
 });
 ```
 
-Reference
----------
+## Reference
 
 ### `buildJSHint(paths, [opts], callback)`
 
@@ -69,8 +69,3 @@ a fatal error occurred (such as error reading a file; JSHint errors are *not*
 included), it will be passed to the callback as the first argument. The second
 arguments will be a boolean indicated whether a JSHint error was encountered in
 any of the files.
-
-License
--------
-
-MIT License. See the `LICENSE` file.
