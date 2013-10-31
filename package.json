@@ -15,7 +15,7 @@
     "license": "MIT",
     "readmeFilename": "README.md",
     "dependencies": {
-        "jshint": "~2.1.10",
+        "jshint": "~2.3.0",
         "minimatch": "~0.2.12",
         "async": "~0.2.9",
         "glob": "~3.2.6"
